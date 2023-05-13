@@ -24,3 +24,22 @@ type Github {
   repoName String
   url      String
 }
+
+model Me {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  slug   String  @unique
+  skills Skill[]
+}
+
+type Skill {
+  name  String
+  type  String
+  image String
+}
+
+enum SkillType {
+  FRONTEND
+  BACKEND
+  DATABASE
+  OTHER
+}
