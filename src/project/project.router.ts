@@ -54,7 +54,7 @@ projectRouter.post(
 projectRouter.put(
   "/:id",
   body("title").isString(),
-  body("body").isString(),
+  body("body"),
   body("images"),
   body("github"),
   body("technologies"),

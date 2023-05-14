@@ -5,6 +5,7 @@ type Project = {
   body: string;
   images: string[];
   slug?: string;
+  mobile: boolean;
   github: Github;
 };
 
@@ -21,6 +22,7 @@ async function seed() {
           body: project.body,
           images: project.images,
           technologies: [],
+          mobile: project.mobile,
           slug: project.title.toLowerCase().split(" ").join("-"),
           github: {
             repoName: project.github.repoName,
@@ -40,6 +42,7 @@ function getProjects(): Array<Project> {
       title: "Project 1",
       body: "Project 1 body",
       images: ["https://picsum.photos/1920/1080"],
+      mobile: false,
       github: {
         repoName: "AnemyApp",
         url: "https://github.com/AlbaNagisa/AnemyApp",
@@ -48,6 +51,7 @@ function getProjects(): Array<Project> {
     {
       title: "Project 2",
       body: "Project 2 body",
+      mobile: true,
       images: ["https://picsum.photos/1920/1080"],
       github: {
         repoName: "AnemyApp",
@@ -57,6 +61,7 @@ function getProjects(): Array<Project> {
     {
       title: "Project 3",
       body: "Project 3 body",
+      mobile: false,
       images: ["https://picsum.photos/1920/1080"],
       github: {
         repoName: "AnemyApp",

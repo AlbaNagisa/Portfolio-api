@@ -6,6 +6,7 @@ type Project = {
   body: string;
   images: string[];
   technologies: string[];
+  mobile: boolean;
   github: Github;
 };
 
@@ -20,6 +21,7 @@ export const listProject = async (): Promise<Project[]> => {
       id: true,
       title: true,
       body: true,
+      mobile: true,
       technologies: true,
       images: true,
       github: true,
@@ -38,11 +40,12 @@ export const getProject = async (id: string): Promise<Project | null> => {
 export const createProject = async (
   project: Omit<Project, "id">
 ): Promise<Project> => {
-  const { title, body, images, github, technologies } = project;
+  const { title, body, images, github, technologies, mobile } = project;
   return db.project.create({
     data: {
       title,
       body,
+      mobile,
       images,
       slug: title.toLowerCase().split(" ").join("-"),
       github,
@@ -55,7 +58,7 @@ export const updateProject = async (
   project: Omit<Project, "id">,
   id: string
 ): Promise<Project> => {
-  const { title, body, images, github, technologies } = project;
+  const { title, body, images, github, technologies, mobile } = project;
   return db.project.update({
     where: {
       id,
@@ -63,6 +66,7 @@ export const updateProject = async (
     data: {
       title,
       body,
+      mobile,
       images,
       slug: title.toLowerCase().split(" ").join("-"),
       github,
@@ -72,6 +76,7 @@ export const updateProject = async (
       id: true,
       title: true,
       body: true,
+      mobile: true,
       images: true,
       github: true,
       technologies: true,
